@@ -25,51 +25,59 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- css -->
     <link rel="stylesheet" href="style.css">
+    <style>
+        .button{
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body class="h-screen bg-gradient-to-tr from-[#7f7fd5] via-[#86a8e7] to-[#91eae4]">
     <div class="container h-screen w-full flex justify-center">
         <div class="border !border-white/60 w-[35%] h-[77%] !mt-22 flex flex-col rounded-lg p-3 !bg-white/70 shadow ">
             <!-- Display Section -->
-            <div class="w-full border-2 !border-white/60 rounded-lg h-[7rem] text-right px-3 !pt-[4rem] text-3xl text-black shadow" id="result" data-placeholder="0"></div>
+             
+           <div>
+                <div class="w-full border-2 !border-white/60 rounded-lg h-[7rem] text-right px-3 !pt-[4rem] text-3xl text-black shadow" id="result" data-placeholder="0"></div>
+           </div>
 
             <!-- Buttons Section -->
             <div class="px-2 pb-2 pt-4 text-black text-xl flex-1 flex justify-center font-medium">
                 <div class="grid grid-cols-5 w-full gap-2">
 
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">2nd</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">deg</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">sin</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">cos</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">tan</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">x<sup>y</sup></div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">lg</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">ln</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">(</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">)</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">√x</div>
-                    <div class="flex justify-center items-center rounded-xl bg-[#1b2838] hover:bg-[#15212b] text-white shadow">C</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">+</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">÷</div>
-                    <div class="flex justify-center items-center rounded-xl bg-[#1b2838] hover:bg-[#15212b] text-white shadow">AC</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">x!</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">7</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">8</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">9</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">–</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">1/x</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">4</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">5</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">6</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">×</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">π</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">1</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">2</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">3</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">•</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">e</div>
-                    <div class="col-span-3 flex justify-center items-center rounded-xl bg-[#1b2838] hover:bg-[#15212b] text-white shadow">=</div>
-                    <div class="flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">0</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">2nd</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">deg</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">sin</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">cos</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">tan</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">x<sup>y</sup></div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">lg</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">ln</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">(</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">)</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">√x</div>
+                    <div class="button flex justify-center items-center rounded-xl bg-[#1b2838] hover:bg-[#15212b] text-white shadow" onclick="clearLast()">C</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow" onclick="btnvalue('+')">+</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow" onclick="btnvalue('/')">÷</div>
+                    <div class="button flex justify-center items-center rounded-xl bg-[#1b2838] hover:bg-[#15212b] text-white shadow" onclick="clearAll()">AC</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">x!</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow" onclick="btnvalue('7')">7</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow" onclick="btnvalue('8')">8</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow" onclick="btnvalue('9')">9</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow" onclick="btnvalue('-')">–</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">1/x</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow" onclick="btnvalue('4')">4</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow" onclick="btnvalue('5')">5</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow" onclick="btnvalue('6')">6</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow" onclick="btnvalue('*')">×</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">π</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow" onclick="btnvalue('1')">1</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow" onclick="btnvalue('2')">2</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow" onclick="btnvalue('3')">3</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow" onclick="btnvalue('.')">•</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow">e</div>
+                    <div class="button col-span-3 flex justify-center items-center rounded-xl bg-[#1b2838] hover:bg-[#15212b] text-white shadow" onclick="equalbtn()">=</div>
+                    <div class="button flex justify-center items-center rounded-xl border !border-white/20 hover:bg-white/45 shadow" onclick="btnvalue('0')">0</div>
                 </div>
             </div>
         </div>
