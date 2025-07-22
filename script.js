@@ -13,18 +13,18 @@ const clearLast = () => {
 const clearAll = () => {
     result.innerHTML = ''
 }
-const equalbtn = () => {
 
-    const result = document.getElementById('result')
-    const exp = result.innerText.trim();
+const equalbtn = () => {
+    const result = document.getElementById('result');
+    let exp = result.innerText.trim();
+
     try {
         if (exp.endsWith('!')) {
-            let num = exp.slice(0, -1)
+            let num = exp.slice(0, -1);
             if (isNaN(num) || num < 0) {
                 result.innerHTML = 'error';
                 return;
             }
-
             let fact = 1;
             for (let i = 1; i <= num; i++) {
                 fact *= i;
@@ -32,57 +32,66 @@ const equalbtn = () => {
             result.innerHTML = fact;
         }
         else {
-            let toEval = exp.includes('^') ? exp.replace(/\^/g, '**') : exp;
-            toEval = toEval.replace(/√(\d+)/g, "Math.sqrt($1)")
-            toEval = toEval.replace(/(\d)(π)/g, '$1*$2');
-            toEval = toEval.replace(/\π/g, 'Math.PI');
-            toEval = toEval.replace(/(\d)(e)/g, '$1*Math.E')
-            toEval = toEval.replace(/\e/g, 'Math.E');
+         
+            exp = exp.replace(/\^/g, '**');
+            exp = exp.replace(/\π/g, 'Math.PI');
+            exp = exp.replace(/\e/g, 'Math.E');
+
+           
+            let toEval = exp;
+
+            toEval = toEval.replace(/√(\d+)/g, "Math.sqrt($1)");
+            toEval = toEval.replace(/(\d)(Math\.PI)/g, '$1*$2');
+            toEval = toEval.replace(/(\d)(Math\.E)/g, '$1*$2');
             toEval = toEval.replace(/lg\((\d+(\.\d+)?)\)/g, 'Math.log10($1)');
             toEval = toEval.replace(/ln\((\d+(\.\d+)?)\)/g, 'Math.log($1)');
-            toEval = toEval.replace(/\^/g, '**');
+
+            
             toEval = toEval.replace(/tan\(([^)]+)\)/g, (_, val) => {
                 let angle = eval(val);
-                if (isDegree) angle = angle * Math.PI / 180; // convert to radians if DEG
+                if (isDegree) angle = angle * Math.PI / 180;
                 return Math.tan(angle);
             });
             toEval = toEval.replace(/cos\(([^)]+)\)/g, (_, val) => {
                 let angle = eval(val);
-                if (isDegree) angle = angle * Math.PI / 180; // convert to radians if DEG
+                if (isDegree) angle = angle * Math.PI / 180;
                 return Math.cos(angle);
             });
             toEval = toEval.replace(/sin\(([^)]+)\)/g, (_, val) => {
                 let angle = eval(val);
-                if (isDegree) angle = angle * Math.PI / 180; // convert to radians if DEG
+                if (isDegree) angle = angle * Math.PI / 180;
                 return Math.sin(angle);
             });
+
+            // Inverse trig functions
             toEval = toEval.replace(/sin⁻¹\(([^)]+)\)/g, (_, val) => {
                 let angle = eval(val);
-                let result = Math.asin(angle);
-                return isDegree ? (result * 180 / Math.PI) : result;
+                let resultVal = Math.asin(angle) * 180 / Math.PI;
+                return Math.round(resultVal);
             });
             toEval = toEval.replace(/cos⁻¹\(([^)]+)\)/g, (_, val) => {
                 let angle = eval(val);
-                let result = Math.acos(angle);
-                return isDegree ? (result * 180 / Math.PI) : result;
+                let resultVal = Math.acos(angle) * 180 / Math.PI;
+                return Math.round(resultVal);
             });
             toEval = toEval.replace(/tan⁻¹\(([^)]+)\)/g, (_, val) => {
                 let angle = eval(val);
-                let result = Math.atan(angle);
-                return isDegree ? (result * 180 / Math.PI) : result;
+                let resultVal = Math.atan(angle) * 180 / Math.PI;
+                return Math.round(resultVal);
             });
 
-            result.innerHTML = eval(toEval)
+
+            result.innerHTML = eval(toEval);
         }
     }
     catch (error) {
-        result.innerHTML = 'error'
+        result.innerHTML = 'error';
         setTimeout(() => {
-            result.innerHTML = ''
+            result.innerHTML = '';
         }, 1000);
     }
-
 }
+
 const factorialbtn = () => {
 
     const result = document.getElementById('result');
@@ -173,7 +182,7 @@ const reciprocalbtn = () => {
     }
 }
 
-let is2nd = false; // false = normal, true = inverse
+let is2nd = false; 
 
 const handleSinBtn = () => {
     const result = document.getElementById('result');
@@ -194,7 +203,7 @@ const handleCosBtn = () => {
 const handleTanBtn = () => {
     const result = document.getElementById('result');
     if (result.innerText == '') {
-        result.innerHTML = is2nd ?  'tan(' : 'tan⁻¹(';
+        result.innerHTML = is2nd ? 'tan(' : 'tan⁻¹(';
     } else {
         result.innerHTML += is2nd ? 'tan(' : 'tan⁻¹(';
     }
