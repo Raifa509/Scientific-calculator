@@ -40,6 +40,38 @@ const equalbtn = () => {
             toEval = toEval.replace(/\e/g, 'Math.E');
             toEval = toEval.replace(/lg\((\d+(\.\d+)?)\)/g, 'Math.log10($1)');
             toEval = toEval.replace(/ln\((\d+(\.\d+)?)\)/g, 'Math.log($1)');
+            toEval = toEval.replace(/\^/g, '**');
+            toEval = toEval.replace(/tan\(([^)]+)\)/g, (_, val) => {
+                let angle = eval(val);
+                if (isDegree) angle = angle * Math.PI / 180; // convert to radians if DEG
+                return Math.tan(angle);
+            });
+            toEval = toEval.replace(/cos\(([^)]+)\)/g, (_, val) => {
+                let angle = eval(val);
+                if (isDegree) angle = angle * Math.PI / 180; // convert to radians if DEG
+                return Math.cos(angle);
+            });
+            toEval = toEval.replace(/sin\(([^)]+)\)/g, (_, val) => {
+                let angle = eval(val);
+                if (isDegree) angle = angle * Math.PI / 180; // convert to radians if DEG
+                return Math.sin(angle);
+            });
+            toEval = toEval.replace(/sin⁻¹\(([^)]+)\)/g, (_, val) => {
+                let angle = eval(val);
+                let result = Math.asin(angle);
+                return isDegree ? (result * 180 / Math.PI) : result;
+            });
+            toEval = toEval.replace(/cos⁻¹\(([^)]+)\)/g, (_, val) => {
+                let angle = eval(val);
+                let result = Math.acos(angle);
+                return isDegree ? (result * 180 / Math.PI) : result;
+            });
+            toEval = toEval.replace(/tan⁻¹\(([^)]+)\)/g, (_, val) => {
+                let angle = eval(val);
+                let result = Math.atan(angle);
+                return isDegree ? (result * 180 / Math.PI) : result;
+            });
+
             result.innerHTML = eval(toEval)
         }
     }
@@ -132,12 +164,66 @@ const lnbtn = () => {
         result.innerHTML += 'ln('
     }
 }
-const reciprocalbtn=()=>{
-    if(result.innerText=='')
-    {
-        result.innerHTML='^(-1)'
+const reciprocalbtn = () => {
+    if (result.innerText == '') {
+        result.innerHTML = '^(-1)'
     }
-    else{
-        result.innerHTML+='^(-1)'
+    else {
+        result.innerHTML += '^(-1)'
+    }
+}
+
+let is2nd = false; // false = normal, true = inverse
+
+const handleSinBtn = () => {
+    const result = document.getElementById('result');
+    if (result.innerText == '') {
+        result.innerHTML = is2nd ? 'sin(' : 'sin⁻¹(';
+    } else {
+        result.innerHTML += is2nd ? 'sin(' : 'sin⁻¹(';
+    }
+};
+const handleCosBtn = () => {
+    const result = document.getElementById('result');
+    if (result.innerText == '') {
+        result.innerHTML = is2nd ? 'cos(' : 'cos⁻¹(';
+    } else {
+        result.innerHTML += is2nd ? 'cos(' : 'cos⁻¹(';
+    }
+};
+const handleTanBtn = () => {
+    const result = document.getElementById('result');
+    if (result.innerText == '') {
+        result.innerHTML = is2nd ?  'tan(' : 'tan⁻¹(';
+    } else {
+        result.innerHTML += is2nd ? 'tan(' : 'tan⁻¹(';
+    }
+};
+
+
+
+let isDegree = true;
+function toggleDegreeMode() {
+    isDegree = !isDegree;
+    const degbtn = document.querySelector('.deg-btn');
+    degbtn.innerText = isDegree ? 'deg' : 'rad';
+}
+
+is2nd = true;
+const toggleInversebtn = () => {
+    is2nd = !is2nd;
+    const sinBtn = document.getElementById('sinbtn');
+    const cosBtn = document.getElementById('cosbtn');
+    const tanBtn = document.getElementById('tanbtn');
+    sinBtn.innerText = is2nd ? 'sin' : 'sin⁻¹';
+    cosBtn.innerText = is2nd ? 'cos' : 'cos⁻¹';
+    tanBtn.innerText = is2nd ? 'tan' : 'tan⁻¹';
+    const deg = document.querySelector('.deg-btn');
+    if (!is2nd) {
+        deg.style.pointerEvents = 'none';
+        deg.style.opacity = '0.5';
+    } else {
+        deg.style.pointerEvents = 'auto';
+        deg.style.opacity = '1';
     }
 }
